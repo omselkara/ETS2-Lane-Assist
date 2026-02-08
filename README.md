@@ -227,12 +227,14 @@ This algorithm adapts to different lighting conditions and road types.
 - ✅ Check that ETS2 is running before starting `play.py`
 - ✅ Ensure Python script has administrator privileges (if needed)
 - ✅ Verify screen capture coordinates match your setup
+- ✅ Make sure the game is not paused and you're actively driving
 
 ### Model Performance Issues
 - ✅ Collect more diverse training data (different roads, weather, time of day)
 - ✅ Train for more epochs (default is 25)
 - ✅ Adjust learning rate in `train.py`
 - ✅ Check that input images match training data format
+- ✅ Ensure captured screen region shows the road clearly
 
 ### DLL Not Loading
 - ✅ Verify game version compatibility
@@ -241,7 +243,7 @@ This algorithm adapts to different lighting conditions and road types.
 - ✅ Restart the game after copying DLL
 
 ### Incorrect Steering
-- ✅ Calibrate the `delta` value in `play.py` (currently 0.00230)
+- ✅ Calibrate the `delta` value in `play.py` (currently 0.0023)
 - ✅ Check screen capture region is correct
 - ✅ Verify steering sensitivity in game settings
 
