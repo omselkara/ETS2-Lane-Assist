@@ -204,13 +204,18 @@ To find the correct coordinates:
 
 ## 🔍 Advanced Edge Detection
 
-The project includes a custom edge detection algorithm:
+The project includes a custom edge detection algorithm (`play.py`):
 ```python
 def advanced_edge_detection(image):
-    # Normalize brightness
-    # Adjust contrast based on image statistics
-    # Apply threshold based on standard deviation
-    # Returns binary edge map
+    maximum = np.max(image)
+    multiplier = 255/maximum
+    image = image*multiplier
+    offset = 127.5-np.mean(image)
+    image = image+offset
+    image = image+image-127.5
+    method = (image//(160+np.std(image)/multiplier)).astype("uint8")
+    method = method*255
+    return method
 ```
 
 This algorithm adapts to different lighting conditions and road types.
@@ -236,7 +241,7 @@ This algorithm adapts to different lighting conditions and road types.
 - ✅ Restart the game after copying DLL
 
 ### Incorrect Steering
-- ✅ Calibrate the `delta` value in `play.py` (currently 0.0022968...)
+- ✅ Calibrate the `delta` value in `play.py` (currently 0.00230)
 - ✅ Check screen capture region is correct
 - ✅ Verify steering sensitivity in game settings
 
